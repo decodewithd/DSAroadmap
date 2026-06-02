@@ -1,668 +1,781 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DSA Roadmap | decode.with.d</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    :root {
+      /* Color Palette */
+      --bg: #050505;
+      --surface: #0a0a0a;
+      --surface-hover: #141414;
+      --surface-card: #111111;
+      --border: #222222;
+      --border-focus: #333333;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      
+      /* Accents */
+      --accent-college: #f97316; /* Orange */
+      --accent-beginner: #22c55e; /* Green */
+      --accent-switch: #a855f7; /* Purple */
+      --accent-faang: #3b82f6; /* Blue */
+      
+      /* Active Accent (Dynamic) */
+      --theme: var(--accent-college);
     }
 
-    body{
-      font-family:'Poppins',sans-serif;
-      background:#020617;
-      color:white;
-      overflow-x:hidden;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
     }
 
-    body::before{
-      content:'';
-      position:fixed;
-      width:600px;
-      height:600px;
-      background:radial-gradient(circle,#ff5e0030,transparent 70%);
-      right:-200px;
-      top:-100px;
-      z-index:-1;
+    /* Background Grid & Glow */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -2;
+      pointer-events: none;
+    }
+    
+    .glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--theme), transparent 60%);
+      opacity: 0.08;
+      border-radius: 50%;
+      top: -200px;
+      right: -200px;
+      z-index: -1;
+      transition: background 0.5s ease;
+      pointer-events: none;
     }
 
-    body::after{
-      content:'';
-      position:fixed;
-      width:500px;
-      height:500px;
-      background:radial-gradient(circle,#7c3aed20,transparent 70%);
-      left:-150px;
-      bottom:-150px;
-      z-index:-1;
+    /* Typography & Tags */
+    .mono { font-family: 'Fira Code', monospace; }
+    
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #fff, var(--text-muted));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .hero{
-      text-align:center;
-      padding:80px 20px 50px;
+    /* Container */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
 
-    .tag{
-      color:#ff7b39;
-      letter-spacing:3px;
-      text-transform:uppercase;
-      font-size:12px;
-      margin-bottom:20px;
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 5rem 0 3rem;
+    }
+    .hero-badge {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: var(--surface-hover);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--theme);
+      margin-bottom: 1.5rem;
+      transition: color 0.3s ease;
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
     }
 
-    h1{
-      font-size:72px;
-      font-weight:800;
-      line-height:1;
-      margin-bottom:20px;
+    /* Track Tabs */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 3rem;
+      background: var(--surface);
+      padding: 0.5rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .tab {
+      padding: 0.75rem 1.5rem;
+      border-radius: 100px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .tab:hover { color: var(--text-main); }
+    .tab.active {
+      background: var(--surface-hover);
+      color: var(--text-main);
+      box-shadow: inset 0 0 0 1px var(--border-focus);
+    }
+    .tab[data-target="college"].active { box-shadow: inset 0 0 0 1px var(--accent-college); }
+    .tab[data-target="beginner"].active { box-shadow: inset 0 0 0 1px var(--accent-beginner); }
+    .tab[data-target="switch"].active { box-shadow: inset 0 0 0 1px var(--accent-switch); }
+    .tab[data-target="faang"].active { box-shadow: inset 0 0 0 1px var(--accent-faang); }
+
+    /* Progress Bar */
+    .progress-container {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .progress-stats { flex: 1; }
+    .progress-title { font-size: 0.875rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;}
+    .progress-text { font-size: 1.5rem; font-weight: 700; margin-top: 0.25rem; }
+    .progress-bar-wrap { flex: 3; }
+    .progress-track {
+      height: 8px;
+      background: var(--surface-hover);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--theme);
+      border-radius: 100px;
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
     }
 
-    .gradient{
-      background:linear-gradient(90deg,#ff7b39,#7c3aed,#06b6d4);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
+    /* Roadmap Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 4rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--theme), transparent);
+      opacity: 0.3;
+      transition: background 0.3s ease;
     }
 
-    .hero p{
-      max-width:700px;
-      margin:auto;
-      color:#94a3b8;
-      line-height:1.8;
-      font-size:17px;
+    .phase-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .phase-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-focus);
+    }
+    
+    .phase-dot {
+      position: absolute;
+      left: -2.35rem;
+      top: 2.5rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background: var(--theme);
+      border: 4px solid var(--bg);
+      box-shadow: 0 0 10px var(--theme);
+      transition: all 0.3s ease;
     }
 
-    .channel{
-      margin-top:25px;
-      display:inline-block;
-      padding:10px 22px;
-      border:1px solid #334155;
-      border-radius:999px;
-      color:#cbd5e1;
-      font-size:14px;
-      background:#0f172a;
+    .phase-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .phase-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .phase-tag {
+      background: var(--surface-hover);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .phase-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .phase-desc { color: var(--text-dim); font-size: 0.9rem; }
+
+    /* Checklists */
+    .checklist {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .check-item:hover { background: var(--surface-hover); border-color: var(--border-focus); }
+    .check-item.done { background: rgba(34, 197, 94, 0.05); border-color: rgba(34, 197, 94, 0.2); }
+    .check-item.done .check-text { color: var(--text-dim); text-decoration: line-through; }
+    
+    .checkbox {
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 0.3rem;
+      border: 2px solid var(--border-focus);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.1rem;
+      transition: all 0.2s ease;
+    }
+    .check-item.done .checkbox { background: var(--theme); border-color: var(--theme); }
+    .check-icon { color: var(--bg); font-size: 0.75rem; opacity: 0; font-weight: bold; }
+    .check-item.done .check-icon { opacity: 1; }
+    
+    .check-text { color: var(--text-main); font-size: 0.95rem; transition: color 0.2s; }
+
+    /* Resources Section */
+    .resources-wrapper { display: none; animation: fadeIn 0.4s ease; }
+    .resources-wrapper.active { display: block; }
+    
+    .res-section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .res-section-title span { color: var(--theme); }
+
+    .res-category { margin-bottom: 3rem; }
+    .res-category h3 {
+      font-size: 1rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .res-category h3::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
     }
 
-    .tracks{
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:15px;
-      padding:30px 20px;
+    .res-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .res-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      padding: 1.25rem;
+      border-radius: 1rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: all 0.2s ease;
+    }
+    .res-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--theme);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .res-card-header { display: flex; align-items: center; gap: 0.75rem; }
+    .res-icon { font-size: 1.5rem; }
+    .res-title { font-weight: 700; font-size: 1.05rem; }
+    .res-desc { color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; flex: 1; }
+    .res-link {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--theme);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      margin-top: auto;
     }
 
-    .track-btn{
-      padding:14px 24px;
-      border:none;
-      border-radius:999px;
-      background:#111827;
-      color:white;
-      cursor:pointer;
-      transition:.3s;
-      border:1px solid #1e293b;
-      font-weight:600;
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 0.875rem;
+    }
+    footer span { color: var(--text-main); font-weight: 600; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .track-btn:hover,
-    .track-btn.active{
-      background:linear-gradient(90deg,#ff7b39,#7c3aed);
-      transform:translateY(-2px);
+    @media (max-width: 768px) {
+      .progress-container { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .timeline { padding-left: 1.5rem; }
+      .phase-dot { left: -1.95rem; }
     }
-
-    .container{
-      width:90%;
-      max-width:1300px;
-      margin:auto;
-      padding-bottom:80px;
-    }
-
-    .timeline{
-      position:relative;
-      margin-top:50px;
-      padding-left:50px;
-    }
-
-    .timeline::before{
-      content:'';
-      position:absolute;
-      left:14px;
-      top:0;
-      width:2px;
-      height:100%;
-      background:#1e293b;
-    }
-
-    .card{
-      position:relative;
-      background:#071226;
-      border:1px solid #132238;
-      border-radius:24px;
-      padding:35px;
-      margin-bottom:40px;
-      transition:.3s;
-    }
-
-    .card:hover{
-      transform:translateY(-5px);
-      border-color:#7c3aed;
-    }
-
-    .dot{
-      position:absolute;
-      left:-48px;
-      top:50px;
-      width:24px;
-      height:24px;
-      border-radius:50%;
-      border:4px solid #020617;
-    }
-
-    .orange{ background:#ff7b39; }
-    .purple{ background:#7c3aed; }
-    .blue{ background:#06b6d4; }
-    .green{ background:#22c55e; }
-
-    .weeks{
-      color:#94a3b8;
-      font-size:14px;
-      margin-bottom:10px;
-      letter-spacing:2px;
-    }
-
-    .title{
-      font-size:48px;
-      font-weight:700;
-      margin-bottom:20px;
-    }
-
-    .topics{
-      color:#cbd5e1;
-      line-height:1.8;
-      margin-bottom:25px;
-      font-size:18px;
-    }
-
-    .difficulty{
-      color:#facc15;
-      margin-bottom:25px;
-      font-size:18px;
-    }
-
-    .section{
-      margin-top:30px;
-    }
-
-    .section h3{
-      margin-bottom:15px;
-      color:#f8fafc;
-      font-size:20px;
-    }
-
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-    }
-
-    .chip{
-      padding:10px 16px;
-      border-radius:999px;
-      background:#0f172a;
-      border:1px solid #1e293b;
-      color:#cbd5e1;
-      font-size:14px;
-    }
-
-    .links{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:18px;
-      margin-top:20px;
-    }
-
-    .link-card{
-      background:#0f172a;
-      border:1px solid #1e293b;
-      padding:20px;
-      border-radius:18px;
-      text-decoration:none;
-      color:white;
-      transition:.3s;
-    }
-
-    .link-card:hover{
-      transform:translateY(-4px);
-      border-color:#7c3aed;
-    }
-
-    .link-card h4{
-      margin-bottom:10px;
-      font-size:18px;
-    }
-
-    .link-card p{
-      color:#94a3b8;
-      font-size:14px;
-      line-height:1.6;
-    }
-
-    footer{
-      text-align:center;
-      padding:50px 20px;
-      color:#64748b;
-      border-top:1px solid #1e293b;
-      margin-top:80px;
-    }
-
-    @media(max-width:768px){
-
-      h1{
-        font-size:52px;
-      }
-
-      .title{
-        font-size:34px;
-      }
-
-      .card{
-        padding:25px;
-      }
-
-      .timeline{
-        padding-left:35px;
-      }
-
-      .dot{
-        left:-34px;
-      }
-    }
-
   </style>
 </head>
-
 <body>
 
-<section class="hero">
+  <div class="glow"></div>
 
-  <div class="tag">
-    interactive dsa roadmap
+  <div class="container">
+    <section class="hero">
+      <div class="hero-badge mono">decode.with.d</div>
+      <h1 class="gradient-text">Master Data Structures</h1>
+      <p>A complete, track-based roadmap with curated sheets, visual tools, and interview prep—tailored for your specific goal.</p>
+    </section>
+
+    <div class="tabs" id="track-tabs">
+      <button class="tab active" data-target="college">🎓 College Student</button>
+      <button class="tab" data-target="beginner">🌱 Complete Beginner</button>
+      <button class="tab" data-target="switch">⚡ Job Switch</button>
+      <button class="tab" data-target="faang">🔥 FAANG Prep</button>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-stats">
+        <div class="progress-title">Your Progress</div>
+        <div class="progress-text mono"><span id="prog-done">0</span> / <span id="prog-total">0</span></div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-track">
+          <div class="progress-fill" id="prog-fill" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline" id="roadmap-timeline">
+      </div>
+
+    <div class="res-section-title">Essential <span>Resources</span></div>
+    <div id="resources-container">
+      </div>
+
   </div>
 
-  <h1>
-    Master <span class="gradient">DSA</span>
-  </h1>
-
-  <p>
-    A complete roadmap with sheets, patterns,
-    visual learning and interview prep resources.
-  </p>
-
-  <div class="channel">
-    built by decode.with.d
-  </div>
-
-</section>
-
-<div class="tracks">
-
-  <button class="track-btn active">
-    🎓 College Student
-  </button>
-
-  <button class="track-btn">
-    ⚡ Job Switch
-  </button>
-
-  <button class="track-btn">
-    🔥 FAANG Prep
-  </button>
-
-  <button class="track-btn">
-    🌱 Beginner
-  </button>
-
-</div>
-
-<div class="container">
-
-  <div id="roadmap-content"></div>
-
-</div>
-
-<footer>
-  Built with ❤️ by decode.with.d
-</footer>
+  <footer>
+    Built with ❤️ by <span>decode.with.d</span><br><br>
+    Check off topics to track your progress. Data is saved locally in your browser.
+  </footer>
 
 <script>
-
-const buttons = document.querySelectorAll('.track-btn');
-const roadmapContainer = document.getElementById('roadmap-content');
-
-const roadmapData = {
-
-college: `
-
-<div class="timeline">
-
-<div class="card">
-<div class="dot orange"></div>
-
-<div class="weeks">Phase 1</div>
-
-<div class="title">College Placement Prep</div>
-
-<div class="topics">
-Arrays • Strings • Recursion • Trees • Graphs • DP
-</div>
-
-<div class="difficulty">
-Difficulty ★★★★☆
-</div>
-
-<div class="section">
-<h3>📚 Famous Sheets</h3>
-
-<div class="links">
-
-<a class="link-card"
-href="https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/"
-target="_blank">
-
-<h4>Striver 180 Sheet</h4>
-
-<p>
-Most famous coding interview sheet.
-</p>
-
-</a>
-
-<a class="link-card"
-href="https://www.geeksforgeeks.org/dsa-sheet-by-love-babbar/"
-target="_blank">
-
-<h4>Love Babbar 450</h4>
-
-<p>
-450 handpicked interview questions.
-</p>
-
-</a>
-
-<a class="link-card"
-href="https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/"
-target="_blank">
-
-<h4>Striver A2Z Sheet</h4>
-
-<p>
-Beginner to advanced DSA roadmap.
-</p>
-
-</a>
-
-<a class="link-card"
-href="https://practice.geeksforgeeks.org/explore"
-target="_blank">
-
-<h4>GFG Practice</h4>
-
-<p>
-Topic wise practice problems.
-</p>
-
-</a>
-
-</div>
-</div>
-
-<div class="section">
-<h3>🎥 Visual Learning</h3>
-
-<div class="links">
-
-<a class="link-card"
-href="https://visualgo.net/en"
-target="_blank">
-
-<h4>Visualgo</h4>
-
-<p>
-Visualize trees, sorting and graphs.
-</p>
-
-</a>
-
-<a class="link-card"
-href="https://neetcode.io/roadmap"
-target="_blank">
-
-<h4>NeetCode Roadmap</h4>
-
-<p>
-Pattern based DSA learning.
-</p>
-
-</a>
-
-</div>
-</div>
-
-</div>
-
-</div>
-
-`,
-
-switch: `
-
-<div class="timeline">
-
-<div class="card">
-<div class="dot purple"></div>
-
-<div class="weeks">3 Month Plan</div>
-
-<div class="title">Job Switch Preparation</div>
-
-<div class="topics">
-Blind 75 • LeetCode • Mock Interviews
-</div>
-
-<div class="difficulty">
-Difficulty ★★★★☆
-</div>
-
-<div class="section">
-
-<h3>🔥 Best Resources</h3>
-
-<div class="links">
-
-<a class="link-card"
-href="https://neetcode.io/practice"
-target="_blank">
-
-<h4>NeetCode 150</h4>
-
-<p>
-Most efficient interview prep roadmap.
-</p>
-
-</a>
-
-<a class="link-card"
-href="https://www.techinterviewhandbook.org/grind75"
-target="_blank">
-
-<h4>Grind 75</h4>
-
-<p>
-Top curated interview questions.
-</p>
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-`,
-
-faang: `
-
-<div class="timeline">
-
-<div class="card">
-<div class="dot blue"></div>
-
-<div class="weeks">Advanced</div>
-
-<div class="title">FAANG Preparation</div>
-
-<div class="topics">
-Advanced DP • Graphs • Segment Trees • Hard Problems
-</div>
-
-<div class="difficulty">
-Difficulty ★★★★★
-</div>
-
-<div class="section">
-
-<h3>🚀 Elite Resources</h3>
-
-<div class="links">
-
-<a class="link-card"
-href="https://leetcode.com/studyplan/top-interview-150/"
-target="_blank">
-
-<h4>LeetCode Top 150</h4>
-
-<p>
-Top FAANG interview questions.
-</p>
-
-</a>
-
-<a class="link-card"
-href="https://cses.fi/problemset/"
-target="_blank">
-
-<h4>CSES Problem Set</h4>
-
-<p>
-Deep problem solving practice.
-</p>
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-`,
-
-beginner: `
-
-<div class="timeline">
-
-<div class="card">
-<div class="dot green"></div>
-
-<div class="weeks">Start Here</div>
-
-<div class="title">Beginner Programming</div>
-
-<div class="topics">
-Variables • Loops • Arrays • Functions • Basics
-</div>
-
-<div class="difficulty">
-Difficulty ★☆☆☆☆
-</div>
-
-<div class="section">
-
-<h3>🌱 Beginner Resources</h3>
-
-<div class="links">
-
-<a class="link-card"
-href="https://www.geeksforgeeks.org/dsa-tutorial-learn-data-structures-and-algorithms/"
-target="_blank">
-
-<h4>GFG Beginner DSA</h4>
-
-<p>
-Learn DSA from scratch.
-</p>
-
-</a>
-
-<a class="link-card"
-href="https://visualgo.net/en"
-target="_blank">
-
-<h4>Visualgo</h4>
-
-<p>
-Learn algorithms visually.
-</p>
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-`
-
+const data = {
+  college: {
+    theme: 'var(--accent-college)',
+    phases: [
+      {
+        title: 'Foundations', meta: 'Phase 1 · Weeks 1-4', desc: 'Arrays, Strings, Two Pointers, Sliding Window, Hashing, Recursion',
+        tasks: [
+          'Understand Time & Space Complexity (Big O)',
+          'Master Array Manipulation (Prefix Sum, Two-Pointer)',
+          'String Problems (Reversal, Palindrome, Anagram)',
+          'HashMap / HashSet Usage',
+          'Basic Recursion and Call-Stack Intuition'
+        ]
+      },
+      {
+        title: 'Core Data Structures', meta: 'Phase 2 · Weeks 5-8', desc: 'Linked Lists, Stacks, Queues, Trees, Heaps',
+        tasks: [
+          'Linked List Reversal, Cycle Detection (Floyd\'s algo)',
+          'Stack (Array Implementation, Monotonic Stack)',
+          'Queue & Deque (Sliding Window Maximum)',
+          'Binary Tree Traversals (BFS, DFS - All Orders)',
+          'BST Operations & Min/Max Heap Basics'
+        ]
+      },
+      {
+        title: 'Graphs & DP', meta: 'Phase 3 · Weeks 9-14', desc: 'BFS/DFS, Dijkstra, DP Patterns, Greedy Algorithms',
+        tasks: [
+          'Graph Representation (Adjacency List/Matrix)',
+          'BFS/DFS on Grids and General Graphs',
+          'Dijkstra & Bellman-Ford Shortest Paths',
+          'DP (1D, 2D, Subsequence, Knapsack Patterns)',
+          'Greedy (Interval Scheduling, Activity Selection)'
+        ]
+      },
+      {
+        title: 'Interview Simulation', meta: 'Phase 4 · Weeks 15-18', desc: 'Mocks, Contests, CS Fundamentals',
+        tasks: [
+          'Solve 3 LeetCode Mediums daily under timed condition',
+          '2 Full Mock Interviews (Pramp/Interviewing.io)',
+          'Practice explaining approaches out loud',
+          'Attempt at least 3 Online Contests',
+          'Revise weak topics & study System Design basics'
+        ]
+      }
+    ],
+    resources: [
+      {
+        category: 'Problem Sheets & Roadmaps',
+        items: [
+          { icon: '📋', title: 'Striver A2Z Sheet', desc: 'Full beginner to advanced DSA roadmap (Step 1-3).', link: 'https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/' },
+          { icon: '🗺️', title: 'NeetCode Roadmap', desc: 'Pattern-based learning with short video explanations.', link: 'https://neetcode.io/roadmap' },
+          { icon: '💼', title: 'Love Babbar 450', desc: '450 handpicked interview questions sorted by topic.', link: 'https://www.geeksforgeeks.org/dsa-sheet-by-love-babbar/' }
+        ]
+      },
+      {
+        category: 'Practice & Visualization',
+        items: [
+          { icon: '🟡', title: 'LeetCode', desc: 'The #1 platform for interview prep. Start with Easy arrays.', link: 'https://leetcode.com/problemset/' },
+          { icon: '🎨', title: 'VisuAlgo', desc: 'Animate sorting, trees, and graphs visually to build intuition.', link: 'https://visualgo.net/en' },
+          { icon: '🟢', title: 'GFG Practice', desc: 'Topic-wise problems with editorials and hints.', link: 'https://practice.geeksforgeeks.org/explore' }
+        ]
+      },
+      {
+        category: 'YouTube Channels',
+        items: [
+          { icon: '🎬', title: 'take U forward', desc: 'Best placement-focused DSA channel (Hindi/English).', link: 'https://www.youtube.com/@takeUforward' },
+          { icon: '📺', title: 'Apna College', desc: 'Great beginner-friendly Java/C++ DSA playlist.', link: 'https://www.youtube.com/@ApnaCollegeOfficial' }
+        ]
+      }
+    ]
+  },
+
+  beginner: {
+    theme: 'var(--accent-beginner)',
+    phases: [
+      {
+        title: 'Programming First', meta: 'Week 1-2', desc: 'Variables, Loops, Functions, Basics',
+        tasks: [
+          'Pick one language (Python or C++ recommended)',
+          'Understand variables, types, conditionals',
+          'For loops, while loops, nested loops',
+          'Functions (parameters, return values)'
+        ]
+      },
+      {
+        title: 'Basic Data Structures', meta: 'Week 3-6', desc: 'Arrays, Strings, HashMaps',
+        tasks: [
+          '1D & 2D Arrays (Traversal, Search, Sort)',
+          'String Manipulation (Reverse, Palindrome)',
+          'Singly Linked List Implementation',
+          'Stack & Queue Array Implementation',
+          'HashMap Basics (Frequency count)'
+        ]
+      },
+      {
+        title: 'Algorithms & Trees', meta: 'Week 7-12', desc: 'Sorting, Binary Search, Trees',
+        tasks: [
+          'Bubble, Selection, Insertion, Merge Sort',
+          'Binary Search (Iterative & Recursive)',
+          'Recursion basics (Factorial, Fibonacci)',
+          'Binary Tree basics & Traversals'
+        ]
+      }
+    ],
+    resources: [
+      {
+        category: 'Start Here',
+        items: [
+          { icon: '🏛️', title: 'CS50x (Harvard)', desc: 'Free world-class introduction to computer science.', link: 'https://cs50.harvard.edu/x/' },
+          { icon: '🐍', title: 'W3Schools Python', desc: 'Interactive tutorials for basic syntax.', link: 'https://www.w3schools.com/python/' },
+          { icon: '📖', title: 'GFG DSA Tutorial', desc: 'Comprehensive step-by-step DSA text guide.', link: 'https://www.geeksforgeeks.org/dsa-tutorial-learn-data-structures-and-algorithms/' }
+        ]
+      },
+      {
+        category: 'Books & Visuals',
+        items: [
+          { icon: '📗', title: 'Grokking Algorithms', desc: 'Highly visual, beginner-friendly introduction to algorithms.', link: 'https://www.amazon.in/Grokking-Algorithms-illustrated-programmers-curious/dp/1617292230' },
+          { icon: '🎨', title: 'VisuAlgo', desc: 'Watch algorithms animate in real time.', link: 'https://visualgo.net/en' }
+        ]
+      }
+    ]
+  },
+
+  switch: {
+    theme: 'var(--accent-switch)',
+    phases: [
+      {
+        title: 'Close Gaps Fast', meta: 'Month 1', desc: 'High ROI Patterns (Arrays, Pointers, Stack)',
+        tasks: [
+          'Complete NeetCode Blind 75 Arrays & Hashing',
+          'Binary Search on Answer pattern',
+          'Monotonic Stack patterns',
+          'Sliding Window patterns (Fixed & Variable)'
+        ]
+      },
+      {
+        title: 'Trees, Graphs & DP', meta: 'Month 2', desc: 'Advanced Patterns',
+        tasks: [
+          'Tree traversals and LCA problems',
+          'Graphs (Connected components, Shortest path)',
+          'DP (Memoization vs Tabulation, Knapsack)',
+          'Interval merging, Meeting rooms'
+        ]
+      },
+      {
+        title: 'Mock & Negotiate', meta: 'Month 3', desc: 'System Design, Mocks, Behavioral',
+        tasks: [
+          '3 Mock Interviews on Pramp / interviewing.io',
+          'Prepare STAR-format behavioral answers',
+          'Study System Design Basics',
+          'Research market rates on levels.fyi'
+        ]
+      }
+    ],
+    resources: [
+      {
+        category: 'High ROI Problem Lists',
+        items: [
+          { icon: '📋', title: 'NeetCode 150', desc: 'The most efficient interview prep roadmap available.', link: 'https://neetcode.io/practice' },
+          { icon: '🗓️', title: 'Grind 75', desc: 'Time-boxed weekly planner for busy engineers.', link: 'https://www.techinterviewhandbook.org/grind75' },
+          { icon: '🔑', title: '14 Coding Patterns', desc: 'Learn the core patterns to ace 90% of questions.', link: 'https://hackernoon.com/14-patterns-to-ace-any-coding-interview-question-c5bb3357f6ed' }
+        ]
+      },
+      {
+        category: 'System Design & Interviews',
+        items: [
+          { icon: '📐', title: 'System Design Primer', desc: 'Definitive open-source system design guide.', link: 'https://github.com/donnemartin/system-design-primer' },
+          { icon: '🧠', title: 'interviewing.io', desc: 'Anonymous mock interviews with senior engineers.', link: 'https://interviewing.io/' },
+          { icon: '💰', title: 'levels.fyi', desc: 'Real compensation data for negotiation.', link: 'https://www.levels.fyi/' }
+        ]
+      }
+    ]
+  },
+
+  faang: {
+    theme: 'var(--accent-faang)',
+    phases: [
+      {
+        title: 'Foundation Check', meta: 'Phase 1', desc: 'LeetCode Top 150 Mastery',
+        tasks: [
+          'Complete LeetCode Top Interview 150',
+          'Solve NeetCode 150 without hints',
+          'Timed Practice (35m Medium, 50m Hard)',
+          'Review wrong answers and re-solve in 3 days'
+        ]
+      },
+      {
+        title: 'Advanced Algorithms', meta: 'Phase 2', desc: 'Hard DP, Graphs, Segment Trees',
+        tasks: [
+          'Union-Find (Connected components, Kruskal\'s)',
+          'Segment Tree / BIT for range queries',
+          'Hard DP (Digit, Bitmask, Interval)',
+          'Advanced Graphs (Tarjan\'s, Bridges)'
+        ]
+      },
+      {
+        title: 'Design Round Prep', meta: 'Phase 3', desc: 'Scalability, Databases, Distributed Systems',
+        tasks: [
+          'Design: URL Shortener, Twitter, Uber',
+          'Understand CAP Theorem, Consistency Models',
+          'SQL vs NoSQL, Caching Strategies',
+          'Study real architecture blogs'
+        ]
+      },
+      {
+        title: 'Final Sprint', meta: 'Phase 4', desc: 'Full-loop Mocks, Mindset',
+        tasks: [
+          '5+ full mock interviews (Coding + Design)',
+          'Prepare 6 behavioral stories (STAR)',
+          'Research company engineering values',
+          'Rest well to ensure peak cognitive performance'
+        ]
+      }
+    ],
+    resources: [
+      {
+        category: 'Hard Problems & CP',
+        items: [
+          { icon: '🎯', title: 'LeetCode Top 150', desc: 'Official FAANG curated study plan.', link: 'https://leetcode.com/studyplan/top-interview-150/' },
+          { icon: '🔢', title: 'CSES Problem Set', desc: 'Gold standard for hard algorithmic concepts.', link: 'https://cses.fi/problemset/' },
+          { icon: '📚', title: 'CP-Algorithms', desc: 'Deep algorithmic theory and mathematical proofs.', link: 'https://cp-algorithms.com/' }
+        ]
+      },
+      {
+        category: 'Advanced System Design',
+        items: [
+          { icon: '📖', title: 'Designing Data-Intensive Apps', desc: 'The bible for distributed systems fundamentals.', link: 'https://dataintensive.net/' },
+          { icon: '🏗️', title: 'ByteByteGo', desc: 'Visual system design explanations by Alex Xu.', link: 'https://bytebytego.com/' },
+          { icon: '🎥', title: 'Gaurav Sen', desc: 'Intuitive microservices and scalability videos.', link: 'https://www.youtube.com/@gkcs' }
+        ]
+      }
+    ]
+  }
 };
 
-buttons.forEach((button, index) => {
+let currentTrack = 'college';
+let savedProgress = JSON.parse(localStorage.getItem('dsa_progress')) || {};
 
-button.addEventListener('click', () => {
+const timelineEl = document.getElementById('roadmap-timeline');
+const resourcesEl = document.getElementById('resources-container');
+const progDoneEl = document.getElementById('prog-done');
+const progTotalEl = document.getElementById('prog-total');
+const progFillEl = document.getElementById('prog-fill');
+const tabs = document.querySelectorAll('.tab');
 
-buttons.forEach(btn => btn.classList.remove('active'));
+function renderRoadmap() {
+  const trackData = data[currentTrack];
+  document.documentElement.style.setProperty('--theme', trackData.theme);
+  
+  // Render Timeline
+  timelineEl.innerHTML = trackData.phases.map((phase, pIdx) => `
+    <div class="phase-card">
+      <div class="phase-dot"></div>
+      <div class="phase-header">
+        <div>
+          <div class="phase-title">${phase.title}</div>
+          <div class="phase-desc">${phase.desc}</div>
+        </div>
+        <div class="phase-meta">
+          <span class="phase-tag mono">${phase.meta}</span>
+        </div>
+      </div>
+      <div class="checklist">
+        ${phase.tasks.map((task, tIdx) => {
+          const taskId = `${currentTrack}-${pIdx}-${tIdx}`;
+          const isDone = savedProgress[taskId];
+          return `
+            <div class="check-item ${isDone ? 'done' : ''}" data-id="${taskId}">
+              <div class="checkbox"><span class="check-icon">✓</span></div>
+              <span class="check-text">${task}</span>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `).join('');
 
-button.classList.add('active');
+  // Render Resources
+  resourcesEl.innerHTML = `
+    <div class="resources-wrapper active">
+      ${trackData.resources.map(cat => `
+        <div class="res-category">
+          <h3 class="mono">${cat.category}</h3>
+          <div class="res-grid">
+            ${cat.items.map(item => `
+              <a href="${item.link}" target="_blank" class="res-card">
+                <div class="res-card-header">
+                  <span class="res-icon">${item.icon}</span>
+                  <span class="res-title">${item.title}</span>
+                </div>
+                <div class="res-desc">${item.desc}</div>
+                <div class="res-link">Open Resource ↗</div>
+              </a>
+            `).join('')}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
 
-let key = 'college';
+  attachCheckListeners();
+  updateProgress();
+}
 
-if(index === 1) key = 'switch';
-if(index === 2) key = 'faang';
-if(index === 3) key = 'beginner';
+function attachCheckListeners() {
+  document.querySelectorAll('.check-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      const taskId = e.currentTarget.getAttribute('data-id');
+      savedProgress[taskId] = !savedProgress[taskId];
+      localStorage.setItem('dsa_progress', JSON.stringify(savedProgress));
+      e.currentTarget.classList.toggle('done');
+      updateProgress();
+    });
+  });
+}
 
-roadmapContainer.innerHTML = roadmapData[key];
+function updateProgress() {
+  const allTasks = document.querySelectorAll('.check-item');
+  const doneTasks = document.querySelectorAll('.check-item.done');
+  const total = allTasks.length;
+  const done = doneTasks.length;
+  const pct = total === 0 ? 0 : Math.round((done / total) * 100);
+  
+  progTotalEl.innerText = total;
+  progDoneEl.innerText = done;
+  progFillEl.style.width = `${pct}%`;
+}
 
+// Tab Switching logic
+tabs.forEach(tab => {
+  tab.addEventListener('click', (e) => {
+    tabs.forEach(t => t.classList.remove('active'));
+    e.currentTarget.classList.add('active');
+    currentTrack = e.currentTarget.getAttribute('data-target');
+    renderRoadmap();
+  });
 });
 
-});
-
-roadmapContainer.innerHTML = roadmapData.college;
+// Initialize
+renderRoadmap();
 
 </script>
-
 </body>
 </html>
-```
