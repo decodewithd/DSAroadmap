@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+
     *{
       margin:0;
       padding:0;
@@ -251,54 +253,6 @@
       line-height:1.6;
     }
 
-    .resource-grid{
-      margin-top:80px;
-    }
-
-    .resource-grid h2{
-      font-size:40px;
-      margin-bottom:30px;
-    }
-
-    .resources{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;
-    }
-
-    .resource{
-      background:#071226;
-      border:1px solid #132238;
-      border-radius:20px;
-      padding:25px;
-      transition:.3s;
-    }
-
-    .resource:hover{
-      transform:translateY(-5px);
-      border-color:#7c3aed;
-    }
-
-    .resource h3{
-      margin-bottom:10px;
-    }
-
-    .resource p{
-      color:#94a3b8;
-      line-height:1.7;
-      margin-bottom:20px;
-      font-size:14px;
-    }
-
-    .resource a{
-      display:inline-block;
-      margin-right:10px;
-      margin-top:8px;
-      color:#7dd3fc;
-      text-decoration:none;
-      font-size:14px;
-    }
-
     footer{
       text-align:center;
       padding:50px 20px;
@@ -329,584 +283,386 @@
         left:-34px;
       }
     }
+
   </style>
 </head>
+
 <body>
 
-  <section class="hero">
-    <div class="tag">interactive dsa roadmap</div>
+<section class="hero">
 
-    <h1>
-      Master <span class="gradient">DSA</span>
-    </h1>
-
-    <p>
-      A complete roadmap with patterns, sheets, visual learning,
-      must-do questions, and curated resources to crack coding interviews.
-    </p>
-
-    <div class="channel">
-      built by decode.with.d
-    </div>
-  </section>
-
-
-<div class="tracks">
-  <button class="track-btn active">🎓 College Student</button>
-  <button class="track-btn">⚡ Job Switch</button>
-  <button class="track-btn">🔥 FAANG Prep</button>
-  <button class="track-btn">🌱 Beginner</button>
-</div>
-
-
-
-  <div class="container">
-
-    <div class="timeline">
-
-      <!-- CARD 1 -->
-
-      <div class="card">
-        <div class="dot orange"></div>
-
-        <div class="weeks">Weeks 1–3</div>
-
-        <div class="title">Foundation</div>
-
-        <div class="topics">
-          Arrays • Strings • Big O • Sorting • Sliding Window
-        </div>
-
-        <div class="difficulty">
-          Difficulty ★★☆☆☆
-        </div>
-
-        <div class="section">
-          <h3>📌 Patterns</h3>
-
-          <div class="chips">
-            <div class="chip">Two Pointer</div>
-            <div class="chip">Sliding Window</div>
-            <div class="chip">Prefix Sum</div>
-            <div class="chip">Binary Search</div>
-          </div>
-        </div>
-
-        <div class="section">
-          <h3>🔥 Must Solve Questions</h3>
-
-          <div class="chips">
-            <div class="chip">Two Sum</div>
-            <div class="chip">Valid Anagram</div>
-            <div class="chip">Contains Duplicate</div>
-            <div class="chip">Best Time to Buy Stock</div>
-          </div>
-        </div>
-
-        <div class="section">
-          <h3>📚 Learn Resources</h3>
-
-          <div class="links">
-
-            <a class="link-card" href="https://takeuforward.org/" target="_blank">
-              <h4>Striver A2Z</h4>
-              <p>Best structured beginner roadmap.</p>
-            </a>
-
-            <a class="link-card" href="https://neetcode.io/roadmap" target="_blank">
-              <h4>NeetCode Roadmap</h4>
-              <p>Pattern-based DSA learning.</p>
-            </a>
-
-            <a class="link-card" href="https://visualgo.net/en" target="_blank">
-              <h4>Visualgo</h4>
-              <p>Visualize arrays, trees, graphs and sorting.</p>
-            </a>
-
-            <a class="link-card" href="https://leetcode.com/studyplan/leetcode-75/" target="_blank">
-              <h4>LeetCode 75</h4>
-              <p>Most important beginner interview problems.</p>
-            </a>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 2 -->
-
-      <div class="card">
-        <div class="dot purple"></div>
-
-        <div class="weeks">Weeks 4–10</div>
-
-        <div class="title">Core DSA</div>
-
-        <div class="topics">
-          Linked List • Stack • Queue • Binary Search • Recursion
-        </div>
-
-        <div class="difficulty">
-          Difficulty ★★★☆☆
-        </div>
-
-        <div class="section">
-          <h3>📌 Patterns</h3>
-
-          <div class="chips">
-            <div class="chip">Fast & Slow Pointer</div>
-            <div class="chip">Monotonic Stack</div>
-            <div class="chip">Recursion Tree</div>
-            <div class="chip">Backtracking Intro</div>
-          </div>
-        </div>
-
-        <div class="section">
-          <h3>🔥 Must Solve Questions</h3>
-
-          <div class="chips">
-            <div class="chip">Reverse Linked List</div>
-            <div class="chip">Valid Parentheses</div>
-            <div class="chip">Merge Two Lists</div>
-            <div class="chip">Binary Search</div>
-          </div>
-        </div>
-
-        <div class="section">
-          <h3>📚 Learn Resources</h3>
-
-          <div class="links">
-
-            <a class="link-card" href="https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/" target="_blank">
-              <h4>Striver SDE Sheet</h4>
-              <p>Best interview prep sheet.</p>
-            </a>
-
-            <a class="link-card" href="https://www.geeksforgeeks.org/data-structures/" target="_blank">
-              <h4>GeeksforGeeks</h4>
-              <p>Deep theory and concept explanations.</p>
-            </a>
-
-            <a class="link-card" href="https://visualgo.net/en/list" target="_blank">
-              <h4>Visual Linked List</h4>
-              <p>Understand pointers visually.</p>
-            </a>
-
-            <a class="link-card" href="https://neetcode.io/practice" target="_blank">
-              <h4>NeetCode Practice</h4>
-              <p>Curated problems by patterns.</p>
-            </a>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 3 -->
-
-      <div class="card">
-        <div class="dot blue"></div>
-
-        <div class="weeks">Weeks 11–18</div>
-
-        <div class="title">Trees & Graphs</div>
-
-        <div class="topics">
-          Trees • BST • Heaps • Graph BFS • DFS • Tries
-        </div>
-
-        <div class="difficulty">
-          Difficulty ★★★★☆
-        </div>
-
-        <div class="section">
-          <h3>📌 Patterns</h3>
-
-          <div class="chips">
-            <div class="chip">Tree Traversal</div>
-            <div class="chip">Level Order BFS</div>
-            <div class="chip">DFS Backtracking</div>
-            <div class="chip">Topological Sort</div>
-          </div>
-        </div>
-
-        <div class="section">
-          <h3>🔥 Must Solve Questions</h3>
-
-          <div class="chips">
-            <div class="chip">Maximum Depth</div>
-            <div class="chip">Invert Binary Tree</div>
-            <div class="chip">Number of Islands</div>
-            <div class="chip">Clone Graph</div>
-          </div>
-        </div>
-
-        <div class="section">
-          <h3>📚 Learn Resources</h3>
-
-          <div class="links">
-
-            <a class="link-card" href="https://visualgo.net/en/bst" target="_blank">
-              <h4>BST Visualizer</h4>
-              <p>Visualize tree traversals and operations.</p>
-            </a>
-
-            <a class="link-card" href="https://visualgo.net/en/graphds" target="_blank">
-              <h4>Graph Visualizer</h4>
-              <p>Understand BFS, DFS and shortest paths.</p>
-            </a>
-
-            <a class="link-card" href="https://codeforces.com/" target="_blank">
-              <h4>Codeforces</h4>
-              <p>Improve graph and problem solving skills.</p>
-            </a>
-
-            <a class="link-card" href="https://leetcode.com/problemset/all/" target="_blank">
-              <h4>LeetCode Trees</h4>
-              <p>Most asked tree interview problems.</p>
-            </a>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 4 -->
-
-      <div class="card">
-        <div class="dot green"></div>
-
-        <div class="weeks">Weeks 19–24</div>
-
-        <div class="title">Dynamic Programming</div>
-
-        <div class="topics">
-          DP • Greedy • Backtracking • Bit Manipulation
-        </div>
-
-        <div class="difficulty">
-          Difficulty ★★★★★
-        </div>
-
-        <div class="section">
-          <h3>📌 Patterns</h3>
-
-          <div class="chips">
-            <div class="chip">Memoization</div>
-            <div class="chip">Tabulation</div>
-            <div class="chip">0/1 Knapsack</div>
-            <div class="chip">DP on Trees</div>
-          </div>
-        </div>
-
-        <div class="section">
-          <h3>🔥 Must Solve Questions</h3>
-
-          <div class="chips">
-            <div class="chip">Climbing Stairs</div>
-            <div class="chip">House Robber</div>
-            <div class="chip">Coin Change</div>
-            <div class="chip">Longest Increasing Subsequence</div>
-          </div>
-        </div>
-
-        <div class="section">
-          <h3>📚 Learn Resources</h3>
-
-          <div class="links">
-
-            <a class="link-card" href="https://takeuforward.org/dynamic-programming/striver-dp-series-dynamic-programming-problems/" target="_blank">
-              <h4>Striver DP Series</h4>
-              <p>Probably the best free DP series online.</p>
-            </a>
-
-            <a class="link-card" href="https://neetcode.io/roadmap" target="_blank">
-              <h4>NeetCode DP</h4>
-              <p>Pattern-first DP explanations.</p>
-            </a>
-
-            <a class="link-card" href="https://visualgo.net/en" target="_blank">
-              <h4>Visual Algorithms</h4>
-              <p>Understand recursion and graph algorithms visually.</p>
-            </a>
-
-            <a class="link-card" href="https://leetcode.com/studyplan/dynamic-programming/" target="_blank">
-              <h4>LeetCode DP</h4>
-              <p>Official dynamic programming study plan.</p>
-            </a>
-
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- RESOURCES -->
-
-    <div class="resource-grid">
-
-      <h2>🔥 Best DSA Resources</h2>
-
-      <div class="resources">
-
-        <div class="resource">
-          <h3>TakeUForward</h3>
-          <p>Best structured DSA learning platform by Striver.</p>
-
-          <a href="https://takeuforward.org/" target="_blank">Website ↗</a>
-          <a href="https://www.youtube.com/@takeUforward" target="_blank">YouTube ↗</a>
-        </div>
-
-        <div class="resource">
-          <h3>NeetCode</h3>
-          <p>Best pattern-based roadmap and interview prep platform.</p>
-
-          <a href="https://neetcode.io/" target="_blank">Website ↗</a>
-          <a href="https://www.youtube.com/@NeetCode" target="_blank">YouTube ↗</a>
-        </div>
-
-        <div class="resource">
-          <h3>Visualgo</h3>
-          <p>Visualize algorithms like trees, graphs, heaps and sorting.</p>
-
-          <a href="https://visualgo.net/en" target="_blank">Visualgo ↗</a>
-        </div>
-
-        <div class="resource">
-          <h3>GeeksforGeeks</h3>
-          <p>Massive DSA article library and interview prep.</p>
-
-          <a href="https://www.geeksforgeeks.org/" target="_blank">Website ↗</a>
-        </div>
-
-        <div class="resource">
-          <h3>LeetCode</h3>
-          <p>The most important platform for coding interviews.</p>
-
-          <a href="https://leetcode.com/" target="_blank">Problems ↗</a>
-        </div>
-
-        <div class="resource">
-          <h3>Codeforces</h3>
-          <p>Competitive programming and advanced problem solving.</p>
-
-          <a href="https://codeforces.com/" target="_blank">Contests ↗</a>
-        </div>
-
-      </div>
-
-    </div>
-
+  <div class="tag">
+    interactive dsa roadmap
   </div>
 
-  <footer>
-    Built with ❤️ by decode.with.d <br><br>
-    “Don’t just watch DSA videos. Build problem solving.”
-  </footer>
-```html
+  <h1>
+    Master <span class="gradient">DSA</span>
+  </h1>
+
+  <p>
+    A complete roadmap with sheets, patterns,
+    visual learning and interview prep resources.
+  </p>
+
+  <div class="channel">
+    built by decode.with.d
+  </div>
+
+</section>
+
+<div class="tracks">
+
+  <button class="track-btn active">
+    🎓 College Student
+  </button>
+
+  <button class="track-btn">
+    ⚡ Job Switch
+  </button>
+
+  <button class="track-btn">
+    🔥 FAANG Prep
+  </button>
+
+  <button class="track-btn">
+    🌱 Beginner
+  </button>
+
+</div>
+
+<div class="container">
+
+  <div id="roadmap-content"></div>
+
+</div>
+
+<footer>
+  Built with ❤️ by decode.with.d
+</footer>
+
 <script>
 
 const buttons = document.querySelectorAll('.track-btn');
+const roadmapContainer = document.getElementById('roadmap-content');
 
 const roadmapData = {
 
-  college: `
-  
-    <div class="timeline">
+college: `
 
-      <!-- YOUR CURRENT COLLEGE ROADMAP HTML -->
-      
-    </div>
-  
-  `,
+<div class="timeline">
 
-  switch: `
+<div class="card">
+<div class="dot orange"></div>
 
-    <div class="timeline">
+<div class="weeks">Phase 1</div>
 
-      <div class="card">
-        <div class="dot purple"></div>
+<div class="title">College Placement Prep</div>
 
-        <div class="weeks">Month 1</div>
+<div class="topics">
+Arrays • Strings • Recursion • Trees • Graphs • DP
+</div>
 
-        <div class="title">Interview Essentials</div>
+<div class="difficulty">
+Difficulty ★★★★☆
+</div>
 
-        <div class="topics">
-          Arrays • Binary Search • Sliding Window • Hashing
-        </div>
+<div class="section">
+<h3>📚 Famous Sheets</h3>
 
-        <div class="difficulty">
-          Difficulty ★★★☆☆
-        </div>
+<div class="links">
 
-        <div class="section">
-          <h3>📌 Patterns</h3>
+<a class="link-card"
+href="https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/"
+target="_blank">
 
-          <div class="chips">
-            <div class="chip">Sliding Window</div>
-            <div class="chip">Two Pointer</div>
-            <div class="chip">Binary Search</div>
-            <div class="chip">Prefix Sum</div>
-          </div>
-        </div>
+<h4>Striver 180 Sheet</h4>
 
-        <div class="section">
-          <h3>🔥 Must Solve</h3>
+<p>
+Most famous coding interview sheet.
+</p>
 
-          <div class="chips">
-            <div class="chip">Two Sum</div>
-            <div class="chip">3Sum</div>
-            <div class="chip">Longest Substring</div>
-          </div>
-        </div>
+</a>
 
-      </div>
+<a class="link-card"
+href="https://www.geeksforgeeks.org/dsa-sheet-by-love-babbar/"
+target="_blank">
 
-      <div class="card">
-        <div class="dot blue"></div>
+<h4>Love Babbar 450</h4>
 
-        <div class="weeks">Month 2</div>
+<p>
+450 handpicked interview questions.
+</p>
 
-        <div class="title">Core Interview DSA</div>
+</a>
 
-        <div class="topics">
-          Linked List • Stack • Queue • Trees • Graphs
-        </div>
+<a class="link-card"
+href="https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/"
+target="_blank">
 
-        <div class="difficulty">
-          Difficulty ★★★★☆
-        </div>
+<h4>Striver A2Z Sheet</h4>
 
-      </div>
+<p>
+Beginner to advanced DSA roadmap.
+</p>
 
-      <div class="card">
-        <div class="dot green"></div>
+</a>
 
-        <div class="weeks">Month 3</div>
+<a class="link-card"
+href="https://practice.geeksforgeeks.org/explore"
+target="_blank">
 
-        <div class="title">DP + Mock Interviews</div>
+<h4>GFG Practice</h4>
 
-        <div class="topics">
-          Dynamic Programming • Backtracking • Mock Interviews
-        </div>
+<p>
+Topic wise practice problems.
+</p>
 
-        <div class="difficulty">
-          Difficulty ★★★★★
-        </div>
+</a>
 
-      </div>
+</div>
+</div>
 
-    </div>
+<div class="section">
+<h3>🎥 Visual Learning</h3>
 
-  `,
+<div class="links">
 
-  faang: `
+<a class="link-card"
+href="https://visualgo.net/en"
+target="_blank">
 
-    <div class="timeline">
+<h4>Visualgo</h4>
 
-      <div class="card">
-        <div class="dot orange"></div>
+<p>
+Visualize trees, sorting and graphs.
+</p>
 
-        <div class="weeks">Phase 1</div>
+</a>
 
-        <div class="title">Pattern Mastery</div>
+<a class="link-card"
+href="https://neetcode.io/roadmap"
+target="_blank">
 
-        <div class="topics">
-          Master all interview patterns deeply
-        </div>
+<h4>NeetCode Roadmap</h4>
 
-        <div class="difficulty">
-          Difficulty ★★★★☆
-        </div>
+<p>
+Pattern based DSA learning.
+</p>
 
-      </div>
+</a>
 
-      <div class="card">
-        <div class="dot purple"></div>
+</div>
+</div>
 
-        <div class="weeks">Phase 2</div>
+</div>
 
-        <div class="title">Advanced DSA</div>
+</div>
 
-        <div class="topics">
-          Segment Trees • Graph Algorithms • Hard DP
-        </div>
+`,
 
-        <div class="difficulty">
-          Difficulty ★★★★★
-        </div>
+switch: `
 
-      </div>
+<div class="timeline">
 
-    </div>
+<div class="card">
+<div class="dot purple"></div>
 
-  `,
+<div class="weeks">3 Month Plan</div>
 
-  beginner: `
+<div class="title">Job Switch Preparation</div>
 
-    <div class="timeline">
+<div class="topics">
+Blind 75 • LeetCode • Mock Interviews
+</div>
 
-      <div class="card">
-        <div class="dot green"></div>
+<div class="difficulty">
+Difficulty ★★★★☆
+</div>
 
-        <div class="weeks">Month 1–2</div>
+<div class="section">
 
-        <div class="title">Programming Basics</div>
+<h3>🔥 Best Resources</h3>
 
-        <div class="topics">
-          Variables • Loops • Functions • Arrays
-        </div>
+<div class="links">
 
-        <div class="difficulty">
-          Difficulty ★☆☆☆☆
-        </div>
+<a class="link-card"
+href="https://neetcode.io/practice"
+target="_blank">
 
-      </div>
+<h4>NeetCode 150</h4>
 
-      <div class="card">
-        <div class="dot blue"></div>
+<p>
+Most efficient interview prep roadmap.
+</p>
 
-        <div class="weeks">Month 3–5</div>
+</a>
 
-        <div class="title">Core DSA</div>
+<a class="link-card"
+href="https://www.techinterviewhandbook.org/grind75"
+target="_blank">
 
-        <div class="topics">
-          Arrays • Linked List • Stack • Queue
-        </div>
+<h4>Grind 75</h4>
 
-        <div class="difficulty">
-          Difficulty ★★☆☆☆
-        </div>
+<p>
+Top curated interview questions.
+</p>
 
-      </div>
+</a>
 
-    </div>
+</div>
 
-  `
+</div>
+
+</div>
+
+</div>
+
+`,
+
+faang: `
+
+<div class="timeline">
+
+<div class="card">
+<div class="dot blue"></div>
+
+<div class="weeks">Advanced</div>
+
+<div class="title">FAANG Preparation</div>
+
+<div class="topics">
+Advanced DP • Graphs • Segment Trees • Hard Problems
+</div>
+
+<div class="difficulty">
+Difficulty ★★★★★
+</div>
+
+<div class="section">
+
+<h3>🚀 Elite Resources</h3>
+
+<div class="links">
+
+<a class="link-card"
+href="https://leetcode.com/studyplan/top-interview-150/"
+target="_blank">
+
+<h4>LeetCode Top 150</h4>
+
+<p>
+Top FAANG interview questions.
+</p>
+
+</a>
+
+<a class="link-card"
+href="https://cses.fi/problemset/"
+target="_blank">
+
+<h4>CSES Problem Set</h4>
+
+<p>
+Deep problem solving practice.
+</p>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+`,
+
+beginner: `
+
+<div class="timeline">
+
+<div class="card">
+<div class="dot green"></div>
+
+<div class="weeks">Start Here</div>
+
+<div class="title">Beginner Programming</div>
+
+<div class="topics">
+Variables • Loops • Arrays • Functions • Basics
+</div>
+
+<div class="difficulty">
+Difficulty ★☆☆☆☆
+</div>
+
+<div class="section">
+
+<h3>🌱 Beginner Resources</h3>
+
+<div class="links">
+
+<a class="link-card"
+href="https://www.geeksforgeeks.org/dsa-tutorial-learn-data-structures-and-algorithms/"
+target="_blank">
+
+<h4>GFG Beginner DSA</h4>
+
+<p>
+Learn DSA from scratch.
+</p>
+
+</a>
+
+<a class="link-card"
+href="https://visualgo.net/en"
+target="_blank">
+
+<h4>Visualgo</h4>
+
+<p>
+Learn algorithms visually.
+</p>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+`
+
 };
-
-const container = document.querySelector('.timeline').parentElement;
 
 buttons.forEach((button, index) => {
 
-  button.addEventListener('click', () => {
+button.addEventListener('click', () => {
 
-    buttons.forEach(btn => btn.classList.remove('active'));
+buttons.forEach(btn => btn.classList.remove('active'));
 
-    button.classList.add('active');
+button.classList.add('active');
 
-    let key = '';
+let key = 'college';
 
-    if(index === 0) key = 'college';
-    if(index === 1) key = 'switch';
-    if(index === 2) key = 'faang';
-    if(index === 3) key = 'beginner';
+if(index === 1) key = 'switch';
+if(index === 2) key = 'faang';
+if(index === 3) key = 'beginner';
 
-    container.querySelector('.timeline').outerHTML = roadmapData[key];
-
-  });
+roadmapContainer.innerHTML = roadmapData[key];
 
 });
 
+});
+
+roadmapContainer.innerHTML = roadmapData.college;
+
 </script>
-```
 
 </body>
 </html>
+```
