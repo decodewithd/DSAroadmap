@@ -350,12 +350,15 @@
     </div>
   </section>
 
-  <div class="tracks">
-    <button class="track-btn active">🎓 College Student</button>
-    <button class="track-btn">⚡ Job Switch</button>
-    <button class="track-btn">🔥 FAANG Prep</button>
-    <button class="track-btn">🌱 Beginner</button>
-  </div>
+
+<div class="tracks">
+  <button class="track-btn active">🎓 College Student</button>
+  <button class="track-btn">⚡ Job Switch</button>
+  <button class="track-btn">🔥 FAANG Prep</button>
+  <button class="track-btn">🌱 Beginner</button>
+</div>
+
+
 
   <div class="container">
 
@@ -697,6 +700,213 @@
     Built with ❤️ by decode.with.d <br><br>
     “Don’t just watch DSA videos. Build problem solving.”
   </footer>
+```html
+<script>
+
+const buttons = document.querySelectorAll('.track-btn');
+
+const roadmapData = {
+
+  college: `
+  
+    <div class="timeline">
+
+      <!-- YOUR CURRENT COLLEGE ROADMAP HTML -->
+      
+    </div>
+  
+  `,
+
+  switch: `
+
+    <div class="timeline">
+
+      <div class="card">
+        <div class="dot purple"></div>
+
+        <div class="weeks">Month 1</div>
+
+        <div class="title">Interview Essentials</div>
+
+        <div class="topics">
+          Arrays • Binary Search • Sliding Window • Hashing
+        </div>
+
+        <div class="difficulty">
+          Difficulty ★★★☆☆
+        </div>
+
+        <div class="section">
+          <h3>📌 Patterns</h3>
+
+          <div class="chips">
+            <div class="chip">Sliding Window</div>
+            <div class="chip">Two Pointer</div>
+            <div class="chip">Binary Search</div>
+            <div class="chip">Prefix Sum</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>🔥 Must Solve</h3>
+
+          <div class="chips">
+            <div class="chip">Two Sum</div>
+            <div class="chip">3Sum</div>
+            <div class="chip">Longest Substring</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card">
+        <div class="dot blue"></div>
+
+        <div class="weeks">Month 2</div>
+
+        <div class="title">Core Interview DSA</div>
+
+        <div class="topics">
+          Linked List • Stack • Queue • Trees • Graphs
+        </div>
+
+        <div class="difficulty">
+          Difficulty ★★★★☆
+        </div>
+
+      </div>
+
+      <div class="card">
+        <div class="dot green"></div>
+
+        <div class="weeks">Month 3</div>
+
+        <div class="title">DP + Mock Interviews</div>
+
+        <div class="topics">
+          Dynamic Programming • Backtracking • Mock Interviews
+        </div>
+
+        <div class="difficulty">
+          Difficulty ★★★★★
+        </div>
+
+      </div>
+
+    </div>
+
+  `,
+
+  faang: `
+
+    <div class="timeline">
+
+      <div class="card">
+        <div class="dot orange"></div>
+
+        <div class="weeks">Phase 1</div>
+
+        <div class="title">Pattern Mastery</div>
+
+        <div class="topics">
+          Master all interview patterns deeply
+        </div>
+
+        <div class="difficulty">
+          Difficulty ★★★★☆
+        </div>
+
+      </div>
+
+      <div class="card">
+        <div class="dot purple"></div>
+
+        <div class="weeks">Phase 2</div>
+
+        <div class="title">Advanced DSA</div>
+
+        <div class="topics">
+          Segment Trees • Graph Algorithms • Hard DP
+        </div>
+
+        <div class="difficulty">
+          Difficulty ★★★★★
+        </div>
+
+      </div>
+
+    </div>
+
+  `,
+
+  beginner: `
+
+    <div class="timeline">
+
+      <div class="card">
+        <div class="dot green"></div>
+
+        <div class="weeks">Month 1–2</div>
+
+        <div class="title">Programming Basics</div>
+
+        <div class="topics">
+          Variables • Loops • Functions • Arrays
+        </div>
+
+        <div class="difficulty">
+          Difficulty ★☆☆☆☆
+        </div>
+
+      </div>
+
+      <div class="card">
+        <div class="dot blue"></div>
+
+        <div class="weeks">Month 3–5</div>
+
+        <div class="title">Core DSA</div>
+
+        <div class="topics">
+          Arrays • Linked List • Stack • Queue
+        </div>
+
+        <div class="difficulty">
+          Difficulty ★★☆☆☆
+        </div>
+
+      </div>
+
+    </div>
+
+  `
+};
+
+const container = document.querySelector('.timeline').parentElement;
+
+buttons.forEach((button, index) => {
+
+  button.addEventListener('click', () => {
+
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    button.classList.add('active');
+
+    let key = '';
+
+    if(index === 0) key = 'college';
+    if(index === 1) key = 'switch';
+    if(index === 2) key = 'faang';
+    if(index === 3) key = 'beginner';
+
+    container.querySelector('.timeline').outerHTML = roadmapData[key];
+
+  });
+
+});
+
+</script>
+```
 
 </body>
 </html>
