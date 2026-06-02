@@ -1,544 +1,690 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<title>DSA Roadmap | decode.with.d</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:'Inter',sans-serif;
-  background:#07070d;
-  color:white;
-  overflow-x:hidden;
-}
-
-/* BACKGROUND GLOW */
-
-.bg-glow{
-  position:fixed;
-  width:500px;
-  height:500px;
-  border-radius:50%;
-  filter:blur(120px);
-  opacity:.15;
-  z-index:-1;
-}
-
-.glow1{
-  background:#7c3aed;
-  top:-150px;
-  left:-120px;
-}
-
-.glow2{
-  background:#ff6b35;
-  bottom:-120px;
-  right:-100px;
-}
-
-/* HERO */
-
-.hero{
-  padding:100px 24px 70px;
-  text-align:center;
-}
-
-.hero-badge{
-  display:inline-block;
-  padding:10px 18px;
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:999px;
-  background:rgba(255,255,255,.03);
-  margin-bottom:28px;
-  letter-spacing:2px;
-  font-size:11px;
-}
-
-.hero h1{
-  font-size:clamp(54px,8vw,110px);
-  line-height:1;
-  font-family:'Syne',sans-serif;
-  font-weight:800;
-}
-
-.hero h1 span{
-  background:linear-gradient(90deg,#ff6b35,#7c3aed,#06b6d4);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.hero-sub{
-  margin-top:26px;
-  color:#9ca3af;
-  font-size:18px;
-  max-width:700px;
-  margin-inline:auto;
-  line-height:1.7;
-}
-
-.creator-tag{
-  margin-top:20px;
-  color:#6b7280;
-  font-size:14px;
-}
-
-.creator-tag span{
-  background:linear-gradient(90deg,#ff6b35,#7c3aed,#06b6d4);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  font-weight:700;
-}
-
-/* TRACK BUTTONS */
-
-.hero-buttons{
-  margin-top:40px;
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  flex-wrap:wrap;
-}
-
-.track-btn{
-  border:none;
-  padding:14px 22px;
-  border-radius:14px;
-  background:#111827;
-  color:white;
-  cursor:pointer;
-  transition:.3s;
-  font-weight:600;
-}
-
-.track-btn:hover{
-  transform:translateY(-2px);
-}
-
-.track-btn.active{
-  background:linear-gradient(90deg,#7c3aed,#9333ea);
-}
-
-/* ROADMAP */
-
-.roadmap-container{
-  max-width:1100px;
-  margin:auto;
-  padding:30px 24px 80px;
-}
-
-.track{
-  display:none;
-}
-
-.track.active{
-  display:block;
-  animation:fade .4s ease;
-}
-
-@keyframes fade{
-  from{
-    opacity:0;
-    transform:translateY(10px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* TRACK HEADER */
-
-.track-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-  padding:32px;
-  border-radius:24px;
-  margin-bottom:40px;
-  border:1px solid rgba(255,255,255,.06);
-}
-
-.orange-bg{
-  background:rgba(255,107,53,.08);
-}
-
-.purple-bg{
-  background:rgba(124,58,237,.08);
-}
-
-.blue-bg{
-  background:rgba(6,182,212,.08);
-}
-
-.green-bg{
-  background:rgba(34,197,94,.08);
-}
-
-.track-header h2{
-  font-size:38px;
-  font-family:'Syne',sans-serif;
-}
-
-.track-header p{
-  margin-top:10px;
-  color:#9ca3af;
-  line-height:1.7;
-}
-
-.hours-card{
-  padding:14px 20px;
-  background:rgba(255,255,255,.05);
-  border-radius:14px;
-  font-weight:700;
-  white-space:nowrap;
-}
-
-/* TIMELINE */
-
-.timeline{
-  position:relative;
-  padding-left:30px;
-}
-
-.timeline::before{
-  content:'';
-  position:absolute;
-  left:10px;
-  top:0;
-  width:2px;
-  height:100%;
-  background:rgba(255,255,255,.08);
-}
-
-.timeline-item{
-  position:relative;
-  margin-bottom:40px;
-}
-
-.timeline-dot{
-  width:20px;
-  height:20px;
-  border-radius:50%;
-  position:absolute;
-  left:-30px;
-  top:18px;
-}
-
-.orange{
-  background:#ff6b35;
-}
-
-.purple{
-  background:#7c3aed;
-}
-
-.blue{
-  background:#06b6d4;
-}
-
-.green{
-  background:#22c55e;
-}
-
-.timeline-card{
-  background:#111827;
-  border:1px solid rgba(255,255,255,.06);
-  border-radius:22px;
-  padding:30px;
-  transition:.3s;
-}
-
-.timeline-card:hover{
-  transform:translateY(-4px);
-  border-color:#7c3aed;
-}
-
-.week-tag{
-  color:#9ca3af;
-  font-size:12px;
-  letter-spacing:1px;
-}
-
-.timeline-card h3{
-  margin-top:12px;
-  font-size:28px;
-  font-family:'Syne',sans-serif;
-}
-
-.timeline-card p{
-  margin-top:12px;
-  color:#cbd5e1;
-  line-height:1.8;
-}
-
-.difficulty{
-  margin-top:18px;
-  color:#fbbf24;
-  font-size:14px;
-}
-
-/* RESOURCE SECTION */
-
-.resources{
-  max-width:1100px;
-  margin:auto;
-  padding:0 24px 80px;
-}
-
-.resources h2{
-  font-size:44px;
-  font-family:'Syne',sans-serif;
-  margin-bottom:30px;
-}
-
-.resource-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-}
-
-.resource-card{
-  background:#111827;
-  border:1px solid rgba(255,255,255,.06);
-  border-radius:22px;
-  padding:28px;
-  text-decoration:none;
-  color:white;
-  transition:.3s;
-}
-
-.resource-card:hover{
-  transform:translateY(-4px);
-  border-color:#7c3aed;
-}
-
-.resource-card h3{
-  font-size:24px;
-  margin-bottom:10px;
-}
-
-.resource-card p{
-  color:#9ca3af;
-  line-height:1.7;
-}
-
-/* FOOTER */
-
-.footer{
-  text-align:center;
-  padding:40px 20px 60px;
-  color:#6b7280;
-  font-size:14px;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-  .hero{
-    padding-top:80px;
-  }
-
-  .hero h1{
-    font-size:64px;
-  }
-
-  .track-header{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-}
-
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DSA Roadmap | decode.with.d</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#020617;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:'';
+      position:fixed;
+      width:600px;
+      height:600px;
+      background:radial-gradient(circle,#ff5e0030,transparent 70%);
+      right:-200px;
+      top:-100px;
+      z-index:-1;
+    }
+
+    body::after{
+      content:'';
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:radial-gradient(circle,#7c3aed20,transparent 70%);
+      left:-150px;
+      bottom:-150px;
+      z-index:-1;
+    }
+
+    .hero{
+      text-align:center;
+      padding:80px 20px 50px;
+    }
+
+    .tag{
+      color:#ff7b39;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      font-size:12px;
+      margin-bottom:20px;
+    }
+
+    h1{
+      font-size:72px;
+      font-weight:800;
+      line-height:1;
+      margin-bottom:20px;
+    }
+
+    .gradient{
+      background:linear-gradient(90deg,#ff7b39,#7c3aed,#06b6d4);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero p{
+      max-width:700px;
+      margin:auto;
+      color:#94a3b8;
+      line-height:1.8;
+      font-size:17px;
+    }
+
+    .channel{
+      margin-top:25px;
+      display:inline-block;
+      padding:10px 22px;
+      border:1px solid #334155;
+      border-radius:999px;
+      color:#cbd5e1;
+      font-size:14px;
+      background:#0f172a;
+    }
+
+    .tracks{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:15px;
+      padding:30px 20px;
+    }
+
+    .track-btn{
+      padding:14px 24px;
+      border:none;
+      border-radius:999px;
+      background:#111827;
+      color:white;
+      cursor:pointer;
+      transition:.3s;
+      border:1px solid #1e293b;
+      font-weight:600;
+    }
+
+    .track-btn:hover,
+    .track-btn.active{
+      background:linear-gradient(90deg,#ff7b39,#7c3aed);
+      transform:translateY(-2px);
+    }
+
+    .container{
+      width:90%;
+      max-width:1300px;
+      margin:auto;
+      padding-bottom:80px;
+    }
+
+    .timeline{
+      position:relative;
+      margin-top:50px;
+      padding-left:50px;
+    }
+
+    .timeline::before{
+      content:'';
+      position:absolute;
+      left:14px;
+      top:0;
+      width:2px;
+      height:100%;
+      background:#1e293b;
+    }
+
+    .card{
+      position:relative;
+      background:#071226;
+      border:1px solid #132238;
+      border-radius:24px;
+      padding:35px;
+      margin-bottom:40px;
+      transition:.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+      border-color:#7c3aed;
+    }
+
+    .dot{
+      position:absolute;
+      left:-48px;
+      top:50px;
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      border:4px solid #020617;
+    }
+
+    .orange{ background:#ff7b39; }
+    .purple{ background:#7c3aed; }
+    .blue{ background:#06b6d4; }
+    .green{ background:#22c55e; }
+
+    .weeks{
+      color:#94a3b8;
+      font-size:14px;
+      margin-bottom:10px;
+      letter-spacing:2px;
+    }
+
+    .title{
+      font-size:48px;
+      font-weight:700;
+      margin-bottom:20px;
+    }
+
+    .topics{
+      color:#cbd5e1;
+      line-height:1.8;
+      margin-bottom:25px;
+      font-size:18px;
+    }
+
+    .difficulty{
+      color:#facc15;
+      margin-bottom:25px;
+      font-size:18px;
+    }
+
+    .section{
+      margin-top:30px;
+    }
+
+    .section h3{
+      margin-bottom:15px;
+      color:#f8fafc;
+      font-size:20px;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .chip{
+      padding:10px 16px;
+      border-radius:999px;
+      background:#0f172a;
+      border:1px solid #1e293b;
+      color:#cbd5e1;
+      font-size:14px;
+    }
+
+    .links{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+      margin-top:20px;
+    }
+
+    .link-card{
+      background:#0f172a;
+      border:1px solid #1e293b;
+      padding:20px;
+      border-radius:18px;
+      text-decoration:none;
+      color:white;
+      transition:.3s;
+    }
+
+    .link-card:hover{
+      transform:translateY(-4px);
+      border-color:#7c3aed;
+    }
+
+    .link-card h4{
+      margin-bottom:10px;
+      font-size:18px;
+    }
+
+    .link-card p{
+      color:#94a3b8;
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .resource-grid{
+      margin-top:80px;
+    }
+
+    .resource-grid h2{
+      font-size:40px;
+      margin-bottom:30px;
+    }
+
+    .resources{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+
+    .resource{
+      background:#071226;
+      border:1px solid #132238;
+      border-radius:20px;
+      padding:25px;
+      transition:.3s;
+    }
+
+    .resource:hover{
+      transform:translateY(-5px);
+      border-color:#7c3aed;
+    }
+
+    .resource h3{
+      margin-bottom:10px;
+    }
+
+    .resource p{
+      color:#94a3b8;
+      line-height:1.7;
+      margin-bottom:20px;
+      font-size:14px;
+    }
+
+    .resource a{
+      display:inline-block;
+      margin-right:10px;
+      margin-top:8px;
+      color:#7dd3fc;
+      text-decoration:none;
+      font-size:14px;
+    }
+
+    footer{
+      text-align:center;
+      padding:50px 20px;
+      color:#64748b;
+      border-top:1px solid #1e293b;
+      margin-top:80px;
+    }
+
+    @media(max-width:768px){
+
+      h1{
+        font-size:52px;
+      }
+
+      .title{
+        font-size:34px;
+      }
+
+      .card{
+        padding:25px;
+      }
+
+      .timeline{
+        padding-left:35px;
+      }
+
+      .dot{
+        left:-34px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="bg-glow glow1"></div>
-<div class="bg-glow glow2"></div>
+  <section class="hero">
+    <div class="tag">interactive dsa roadmap</div>
 
-<!-- HERO -->
+    <h1>
+      Master <span class="gradient">DSA</span>
+    </h1>
 
-<section class="hero">
+    <p>
+      A complete roadmap with patterns, sheets, visual learning,
+      must-do questions, and curated resources to crack coding interviews.
+    </p>
 
-  <div class="hero-badge">
-    INTERACTIVE DSA ROADMAP
-  </div>
-
-  <h1>
-    Choose Your <span>DSA Path</span>
-  </h1>
-
-  <p class="hero-sub">
-    Stop collecting random resources.
-    Follow a structured roadmap built for your goal.
-  </p>
-
-  <div class="creator-tag">
-    crafted by <span>decode.with.d</span>
-  </div>
-
-  <div class="hero-buttons">
-
-    <button class="track-btn active" data-track="placement">
-      🎓 Placement Track
-    </button>
-
-    <button class="track-btn" data-track="switch">
-      ⚡ Job Switch Sprint
-    </button>
-
-    <button class="track-btn" data-track="faang">
-      🔥 FAANG Elite
-    </button>
-
-    <button class="track-btn" data-track="beginner">
-      🌱 Zero to Hero
-    </button>
-
-  </div>
-
-</section>
-
-<!-- ROADMAP -->
-
-<section class="roadmap-container">
-
-  <!-- PLACEMENT -->
-
-  <div class="track active" id="placement">
-
-    <div class="track-header orange-bg">
-
-      <div>
-        <h2>Placement Track</h2>
-        <p>
-          Perfect for college students preparing for placements in 6 months.
-        </p>
-      </div>
-
-      <div class="hours-card">
-        2–3 hrs/day
-      </div>
-
+    <div class="channel">
+      built by decode.with.d
     </div>
+  </section>
+
+  <div class="tracks">
+    <button class="track-btn active">🎓 College Student</button>
+    <button class="track-btn">⚡ Job Switch</button>
+    <button class="track-btn">🔥 FAANG Prep</button>
+    <button class="track-btn">🌱 Beginner</button>
+  </div>
+
+  <div class="container">
 
     <div class="timeline">
 
-      <div class="timeline-item">
+      <!-- CARD 1 -->
 
-        <div class="timeline-dot orange"></div>
+      <div class="card">
+        <div class="dot orange"></div>
 
-        <div class="timeline-card">
+        <div class="weeks">Weeks 1–3</div>
 
-          <span class="week-tag">
-            Weeks 1–3
-          </span>
+        <div class="title">Foundation</div>
 
-          <h3>Foundation</h3>
+        <div class="topics">
+          Arrays • Strings • Big O • Sorting • Sliding Window
+        </div>
 
-          <p>
-            Arrays • Strings • Big O • Sorting • Sliding Window
-          </p>
+        <div class="difficulty">
+          Difficulty ★★☆☆☆
+        </div>
 
-          <div class="difficulty">
-            Difficulty ★★☆☆☆
+        <div class="section">
+          <h3>📌 Patterns</h3>
+
+          <div class="chips">
+            <div class="chip">Two Pointer</div>
+            <div class="chip">Sliding Window</div>
+            <div class="chip">Prefix Sum</div>
+            <div class="chip">Binary Search</div>
           </div>
-
         </div>
 
-      </div>
+        <div class="section">
+          <h3>🔥 Must Solve Questions</h3>
 
-      <div class="timeline-item">
-
-        <div class="timeline-dot purple"></div>
-
-        <div class="timeline-card">
-
-          <span class="week-tag">
-            Weeks 4–10
-          </span>
-
-          <h3>Core DSA</h3>
-
-          <p>
-            Linked List • Stack • Queue • Binary Search • Recursion
-          </p>
-
-          <div class="difficulty">
-            Difficulty ★★★☆☆
+          <div class="chips">
+            <div class="chip">Two Sum</div>
+            <div class="chip">Valid Anagram</div>
+            <div class="chip">Contains Duplicate</div>
+            <div class="chip">Best Time to Buy Stock</div>
           </div>
-
         </div>
 
-      </div>
+        <div class="section">
+          <h3>📚 Learn Resources</h3>
 
-      <div class="timeline-item">
+          <div class="links">
 
-        <div class="timeline-dot blue"></div>
+            <a class="link-card" href="https://takeuforward.org/" target="_blank">
+              <h4>Striver A2Z</h4>
+              <p>Best structured beginner roadmap.</p>
+            </a>
 
-        <div class="timeline-card">
+            <a class="link-card" href="https://neetcode.io/roadmap" target="_blank">
+              <h4>NeetCode Roadmap</h4>
+              <p>Pattern-based DSA learning.</p>
+            </a>
 
-          <span class="week-tag">
-            Weeks 11–18
-          </span>
+            <a class="link-card" href="https://visualgo.net/en" target="_blank">
+              <h4>Visualgo</h4>
+              <p>Visualize arrays, trees, graphs and sorting.</p>
+            </a>
 
-          <h3>Trees & Graphs</h3>
+            <a class="link-card" href="https://leetcode.com/studyplan/leetcode-75/" target="_blank">
+              <h4>LeetCode 75</h4>
+              <p>Most important beginner interview problems.</p>
+            </a>
 
-          <p>
-            Trees • BFS • DFS • Heap • Graph Algorithms
-          </p>
-
-          <div class="difficulty">
-            Difficulty ★★★★☆
           </div>
-
         </div>
-
       </div>
 
-      <div class="timeline-item">
+      <!-- CARD 2 -->
 
-        <div class="timeline-dot green"></div>
+      <div class="card">
+        <div class="dot purple"></div>
 
-        <div class="timeline-card">
+        <div class="weeks">Weeks 4–10</div>
 
-          <span class="week-tag">
-            Weeks 19–24
-          </span>
+        <div class="title">Core DSA</div>
 
-          <h3>DP + Interview Prep</h3>
+        <div class="topics">
+          Linked List • Stack • Queue • Binary Search • Recursion
+        </div>
 
-          <p>
-            Dynamic Programming • Greedy • Mock Interviews
-          </p>
+        <div class="difficulty">
+          Difficulty ★★★☆☆
+        </div>
 
-          <div class="difficulty">
-            Difficulty ★★★★★
+        <div class="section">
+          <h3>📌 Patterns</h3>
+
+          <div class="chips">
+            <div class="chip">Fast & Slow Pointer</div>
+            <div class="chip">Monotonic Stack</div>
+            <div class="chip">Recursion Tree</div>
+            <div class="chip">Backtracking Intro</div>
           </div>
+        </div>
 
+        <div class="section">
+          <h3>🔥 Must Solve Questions</h3>
+
+          <div class="chips">
+            <div class="chip">Reverse Linked List</div>
+            <div class="chip">Valid Parentheses</div>
+            <div class="chip">Merge Two Lists</div>
+            <div class="chip">Binary Search</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>📚 Learn Resources</h3>
+
+          <div class="links">
+
+            <a class="link-card" href="https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/" target="_blank">
+              <h4>Striver SDE Sheet</h4>
+              <p>Best interview prep sheet.</p>
+            </a>
+
+            <a class="link-card" href="https://www.geeksforgeeks.org/data-structures/" target="_blank">
+              <h4>GeeksforGeeks</h4>
+              <p>Deep theory and concept explanations.</p>
+            </a>
+
+            <a class="link-card" href="https://visualgo.net/en/list" target="_blank">
+              <h4>Visual Linked List</h4>
+              <p>Understand pointers visually.</p>
+            </a>
+
+            <a class="link-card" href="https://neetcode.io/practice" target="_blank">
+              <h4>NeetCode Practice</h4>
+              <p>Curated problems by patterns.</p>
+            </a>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+
+      <div class="card">
+        <div class="dot blue"></div>
+
+        <div class="weeks">Weeks 11–18</div>
+
+        <div class="title">Trees & Graphs</div>
+
+        <div class="topics">
+          Trees • BST • Heaps • Graph BFS • DFS • Tries
+        </div>
+
+        <div class="difficulty">
+          Difficulty ★★★★☆
+        </div>
+
+        <div class="section">
+          <h3>📌 Patterns</h3>
+
+          <div class="chips">
+            <div class="chip">Tree Traversal</div>
+            <div class="chip">Level Order BFS</div>
+            <div class="chip">DFS Backtracking</div>
+            <div class="chip">Topological Sort</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>🔥 Must Solve Questions</h3>
+
+          <div class="chips">
+            <div class="chip">Maximum Depth</div>
+            <div class="chip">Invert Binary Tree</div>
+            <div class="chip">Number of Islands</div>
+            <div class="chip">Clone Graph</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>📚 Learn Resources</h3>
+
+          <div class="links">
+
+            <a class="link-card" href="https://visualgo.net/en/bst" target="_blank">
+              <h4>BST Visualizer</h4>
+              <p>Visualize tree traversals and operations.</p>
+            </a>
+
+            <a class="link-card" href="https://visualgo.net/en/graphds" target="_blank">
+              <h4>Graph Visualizer</h4>
+              <p>Understand BFS, DFS and shortest paths.</p>
+            </a>
+
+            <a class="link-card" href="https://codeforces.com/" target="_blank">
+              <h4>Codeforces</h4>
+              <p>Improve graph and problem solving skills.</p>
+            </a>
+
+            <a class="link-card" href="https://leetcode.com/problemset/all/" target="_blank">
+              <h4>LeetCode Trees</h4>
+              <p>Most asked tree interview problems.</p>
+            </a>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+
+      <div class="card">
+        <div class="dot green"></div>
+
+        <div class="weeks">Weeks 19–24</div>
+
+        <div class="title">Dynamic Programming</div>
+
+        <div class="topics">
+          DP • Greedy • Backtracking • Bit Manipulation
+        </div>
+
+        <div class="difficulty">
+          Difficulty ★★★★★
+        </div>
+
+        <div class="section">
+          <h3>📌 Patterns</h3>
+
+          <div class="chips">
+            <div class="chip">Memoization</div>
+            <div class="chip">Tabulation</div>
+            <div class="chip">0/1 Knapsack</div>
+            <div class="chip">DP on Trees</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>🔥 Must Solve Questions</h3>
+
+          <div class="chips">
+            <div class="chip">Climbing Stairs</div>
+            <div class="chip">House Robber</div>
+            <div class="chip">Coin Change</div>
+            <div class="chip">Longest Increasing Subsequence</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>📚 Learn Resources</h3>
+
+          <div class="links">
+
+            <a class="link-card" href="https://takeuforward.org/dynamic-programming/striver-dp-series-dynamic-programming-problems/" target="_blank">
+              <h4>Striver DP Series</h4>
+              <p>Probably the best free DP series online.</p>
+            </a>
+
+            <a class="link-card" href="https://neetcode.io/roadmap" target="_blank">
+              <h4>NeetCode DP</h4>
+              <p>Pattern-first DP explanations.</p>
+            </a>
+
+            <a class="link-card" href="https://visualgo.net/en" target="_blank">
+              <h4>Visual Algorithms</h4>
+              <p>Understand recursion and graph algorithms visually.</p>
+            </a>
+
+            <a class="link-card" href="https://leetcode.com/studyplan/dynamic-programming/" target="_blank">
+              <h4>LeetCode DP</h4>
+              <p>Official dynamic programming study plan.</p>
+            </a>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RESOURCES -->
+
+    <div class="resource-grid">
+
+      <h2>🔥 Best DSA Resources</h2>
+
+      <div class="resources">
+
+        <div class="resource">
+          <h3>TakeUForward</h3>
+          <p>Best structured DSA learning platform by Striver.</p>
+
+          <a href="https://takeuforward.org/" target="_blank">Website ↗</a>
+          <a href="https://www.youtube.com/@takeUforward" target="_blank">YouTube ↗</a>
+        </div>
+
+        <div class="resource">
+          <h3>NeetCode</h3>
+          <p>Best pattern-based roadmap and interview prep platform.</p>
+
+          <a href="https://neetcode.io/" target="_blank">Website ↗</a>
+          <a href="https://www.youtube.com/@NeetCode" target="_blank">YouTube ↗</a>
+        </div>
+
+        <div class="resource">
+          <h3>Visualgo</h3>
+          <p>Visualize algorithms like trees, graphs, heaps and sorting.</p>
+
+          <a href="https://visualgo.net/en" target="_blank">Visualgo ↗</a>
+        </div>
+
+        <div class="resource">
+          <h3>GeeksforGeeks</h3>
+          <p>Massive DSA article library and interview prep.</p>
+
+          <a href="https://www.geeksforgeeks.org/" target="_blank">Website ↗</a>
+        </div>
+
+        <div class="resource">
+          <h3>LeetCode</h3>
+          <p>The most important platform for coding interviews.</p>
+
+          <a href="https://leetcode.com/" target="_blank">Problems ↗</a>
+        </div>
+
+        <div class="resource">
+          <h3>Codeforces</h3>
+          <p>Competitive programming and advanced problem solving.</p>
+
+          <a href="https://codeforces.com/" target="_blank">Contests ↗</a>
         </div>
 
       </div>
@@ -547,336 +693,10 @@ body{
 
   </div>
 
-  <!-- SWITCH -->
-
-  <div class="track" id="switch">
-
-    <div class="track-header purple-bg">
-
-      <div>
-        <h2>Job Switch Sprint</h2>
-        <p>
-          Fast-paced roadmap for software engineers preparing for interviews.
-        </p>
-      </div>
-
-      <div class="hours-card">
-        4 hrs/day
-      </div>
-
-    </div>
-
-    <div class="timeline">
-
-      <div class="timeline-item">
-
-        <div class="timeline-dot orange"></div>
-
-        <div class="timeline-card">
-
-          <span class="week-tag">
-            Month 1
-          </span>
-
-          <h3>Patterns</h3>
-
-          <p>
-            Sliding Window • Two Pointer • Binary Search
-          </p>
-
-        </div>
-
-      </div>
-
-      <div class="timeline-item">
-
-        <div class="timeline-dot purple"></div>
-
-        <div class="timeline-card">
-
-          <span class="week-tag">
-            Month 2
-          </span>
-
-          <h3>Trees & Graphs</h3>
-
-          <p>
-            BFS • DFS • Graph Patterns • Heaps
-          </p>
-
-        </div>
-
-      </div>
-
-      <div class="timeline-item">
-
-        <div class="timeline-dot blue"></div>
-
-        <div class="timeline-card">
-
-          <span class="week-tag">
-            Month 3
-          </span>
-
-          <h3>DP + Mock Interviews</h3>
-
-          <p>
-            LeetCode Mediums • Timed Practice • Mock Rounds
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- FAANG -->
-
-  <div class="track" id="faang">
-
-    <div class="track-header blue-bg">
-
-      <div>
-        <h2>FAANG Elite</h2>
-        <p>
-          Advanced roadmap for Tier-1 companies and top startups.
-        </p>
-      </div>
-
-      <div class="hours-card">
-        4–5 hrs/day
-      </div>
-
-    </div>
-
-    <div class="timeline">
-
-      <div class="timeline-item">
-
-        <div class="timeline-dot orange"></div>
-
-        <div class="timeline-card">
-
-          <span class="week-tag">
-            Phase 1
-          </span>
-
-          <h3>Pattern Mastery</h3>
-
-          <p>
-            Master all core interview patterns thoroughly.
-          </p>
-
-        </div>
-
-      </div>
-
-      <div class="timeline-item">
-
-        <div class="timeline-dot purple"></div>
-
-        <div class="timeline-card">
-
-          <span class="week-tag">
-            Phase 2
-          </span>
-
-          <h3>Advanced Structures</h3>
-
-          <p>
-            Segment Trees • Fenwick Trees • Advanced Graphs
-          </p>
-
-        </div>
-
-      </div>
-
-      <div class="timeline-item">
-
-        <div class="timeline-dot blue"></div>
-
-        <div class="timeline-card">
-
-          <span class="week-tag">
-            Phase 3
-          </span>
-
-          <h3>Hard DP</h3>
-
-          <p>
-            Digit DP • Bitmask DP • Tree DP
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- BEGINNER -->
-
-  <div class="track" id="beginner">
-
-    <div class="track-header green-bg">
-
-      <div>
-        <h2>Zero to Hero</h2>
-        <p>
-          For complete beginners starting coding from scratch.
-        </p>
-      </div>
-
-      <div class="hours-card">
-        1–2 hrs/day
-      </div>
-
-    </div>
-
-    <div class="timeline">
-
-      <div class="timeline-item">
-
-        <div class="timeline-dot green"></div>
-
-        <div class="timeline-card">
-
-          <span class="week-tag">
-            Month 1–2
-          </span>
-
-          <h3>Programming Basics</h3>
-
-          <p>
-            Variables • Loops • Functions • Arrays • Logic Building
-          </p>
-
-        </div>
-
-      </div>
-
-      <div class="timeline-item">
-
-        <div class="timeline-dot blue"></div>
-
-        <div class="timeline-card">
-
-          <span class="week-tag">
-            Month 3–5
-          </span>
-
-          <h3>Core DSA</h3>
-
-          <p>
-            Stack • Queue • Linked List • Hashing
-          </p>
-
-        </div>
-
-      </div>
-
-      <div class="timeline-item">
-
-        <div class="timeline-dot purple"></div>
-
-        <div class="timeline-card">
-
-          <span class="week-tag">
-            Month 6–9
-          </span>
-
-          <h3>Interview Prep</h3>
-
-          <p>
-            Trees • Graphs • DP • LeetCode
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- RESOURCES -->
-
-<section class="resources">
-
-  <h2>
-    Best DSA Resources
-  </h2>
-
-  <div class="resource-grid">
-
-    <a href="https://takeuforward.org" target="_blank" class="resource-card">
-      <h3>TakeUForward</h3>
-      <p>
-        Structured DSA learning by Striver.
-      </p>
-    </a>
-
-    <a href="https://neetcode.io" target="_blank" class="resource-card">
-      <h3>NeetCode</h3>
-      <p>
-        Best roadmap + interview patterns.
-      </p>
-    </a>
-
-    <a href="https://leetcode.com" target="_blank" class="resource-card">
-      <h3>LeetCode</h3>
-      <p>
-        Essential coding interview platform.
-      </p>
-    </a>
-
-    <a href="https://www.geeksforgeeks.org" target="_blank" class="resource-card">
-      <h3>GeeksforGeeks</h3>
-      <p>
-        Concepts, theory, and company questions.
-      </p>
-    </a>
-
-  </div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer class="footer">
-  built by decode.with.d • interactive DSA roadmap
-</footer>
-
-<script>
-
-const buttons = document.querySelectorAll(".track-btn");
-const tracks = document.querySelectorAll(".track");
-
-buttons.forEach(button => {
-
-  button.addEventListener("click", () => {
-
-    buttons.forEach(btn => btn.classList.remove("active"));
-
-    tracks.forEach(track => track.classList.remove("active"));
-
-    button.classList.add("active");
-
-    const target = button.dataset.track;
-
-    document.getElementById(target).classList.add("active");
-
-  });
-
-});
-
-</script>
+  <footer>
+    Built with ❤️ by decode.with.d <br><br>
+    “Don’t just watch DSA videos. Build problem solving.”
+  </footer>
 
 </body>
 </html>
-```
